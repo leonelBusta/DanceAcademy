@@ -1,0 +1,75 @@
+﻿@model Dance_MVCRepository.Models.Direccion
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 class="text-center">Create</h3>
+
+<form method="post" asp-area="Main" asp-controller="Direccion" asp-action="Insert" enctype="multipart/form-data">
+    <div class="row px-2 mx-2 border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-10 offset-2 mt-4">
+            @*calle*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Calle"></label>
+                </div>
+
+                <div class="col-8">
+                    <input asp-for="Calle" class="form-control" />
+                    <span asp-validation-for="Calle" class="text-danger"></span>
+                </div>
+            </div>
+            @*Numero*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Numero"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Numero" class="form-control" />
+                    <span asp-validation-for="Numero" class="text-danger"></span>
+                </div>
+            </div>
+            @*colonia*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Colonia"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Colonia" class="form-control" />
+                    <span asp-validation-for="Colonia" class="text-danger"></span>
+                </div>
+            </div>
+            @*Ciudad*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Ciudad"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Ciudad" class="form-control" />
+                    <span asp-validation-for="Ciudad" class="text-danger"></span>
+                </div>
+            </div>
+            @*Estado*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Estado"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Estado" class="form-control" />
+                    <span asp-validation-for="Estado" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-8 offset-4">
+            <partial name="VistaBotones" />
+
+        </div>
+    </div>
+</form>

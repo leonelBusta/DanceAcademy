@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <h2>Listado de Generos musicales</h2>
+    </div>
+    <div class="col-6">
+        <a asp-area="Main" asp-controller="Genero" asp-action="Create" class="btn btn-success">
+            Agregar Generos
+        </a>
+    </div>
+
+</div>
+
+<table id="tablaGeneros" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+
+        </tr>
+    </thead>
+</table>
+
+@section Scripts{
+    <script src="~/js/genero.js">
+
+    </script>
+}
