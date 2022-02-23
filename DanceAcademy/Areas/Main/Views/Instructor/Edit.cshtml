@@ -44,11 +44,11 @@
 
                 <div class="col-8">
                     <input type="file" asp-for="UrlFoto" class="form-control" />
+                    <span asp-validation-for="UrlFoto" class="text-danger"></span>
                     <div class="col-2">
                         <img src="/@Model.UrlFoto" alt="" width="100" />
                     </div>
                 </div>
-            </div>
             
             <div class="col-8">
                 <label asp-for="CodigoInstructor"></label>

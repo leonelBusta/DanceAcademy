@@ -59,7 +59,7 @@ namespace DanceAcademy.Areas.Main.Controllers
                     imagen[0].CopyTo(stream);
                 }
                 //actualizar el calor
-                ins.UrlFoto = @"imagenes\instructores" + nombreNuevo + extension;
+                ins.UrlFoto = @"imagenes\instructores\" + nombreNuevo + extension;
 
 
                 unidadTrabajo.IRepo.Add(ins);
@@ -102,22 +102,39 @@ namespace DanceAcademy.Areas.Main.Controllers
         {
             if (ModelState.IsValid)
             {
-                /* String rutaPrincipal = hosting.WebRootPath;
-                 var imagen = HttpContext.Request.Form.Files;
-                 string nombreNuevo = Guid.NewGuid().ToString();
-                 var folder = Path.Combine(rutaPrincipal, @"imagenes\instructores");
-                 var extension = Path.GetExtension(imagen[0].FileName);
-                 using (var stream = new FileStream(Path.Combine(folder, nombreNuevo + extension), FileMode.Create))
-                 {
-                     imagen[0].CopyTo(stream);
-                 }
-                 ins.UrlFoto = @"imagenes\instructores" + nombreNuevo + extension; */
+                var imagen = HttpContext.Request.Form.Files;
+                if (imagen.Count > 0) //pregunta si el usuario selecciono una nueva imagen 
+                {
+                    String rutaPrincipal = hosting.WebRootPath;
+
+                    string nombreNuevo = Guid.NewGuid().ToString();
+                    var folder = Path.Combine(rutaPrincipal, @"imagenes\instructores");
+                    var extension = Path.GetExtension(imagen[0].FileName);
+                    if (extension.ToLower() != ".jpg" && extension.ToLower() != ".png")
+                    {
+                        ModelState.AddModelError("UrlFoto", "Foto no es valida");
+                        return View("Create", ins);
+                    }
+                    using (var stream = new FileStream(Path.Combine(folder, nombreNuevo + extension), FileMode.Create))
+                    {
+                        imagen[0].CopyTo(stream);
+                    }
+                    //actualizar el calor
+                    ins.UrlFoto = @"imagenes\instructores\" + nombreNuevo + extension;
+
+                }
+                else //el usuario no selecciono una nueva imagen, por lo tanto, se conserva a actual
+                {
+                    Instructores insFromDB = unidadTrabajo.IRepo.Get(ins.Id);
+                    ins.UrlFoto = insFromDB.UrlFoto;
+                }
+                
 
                 unidadTrabajo.IRepo.Update(ins);
                 unidadTrabajo.save();
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
-            return View("Edit", ins);
+            return View("Create", ins);
         }
     }
 }

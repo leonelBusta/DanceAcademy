@@ -20,15 +20,16 @@ function cargarDataTable() {
             { "data": "edad" },
             {
                 "data": "urlFoto",
+                "width": "25%",
                 "render": function (data) {
-                    return `<img src=/${data} alt="" width="100"/>`
+                    return `<img src=/${data} alt="Image" width="200"/>`
                 }
             },
             {
                 "data": "id",
                 "width": "25%",
                 "render": function (data) {
-                    return `<div class="text-center"><a class="btn btn-primary" href="/Main/Instructor/Edit/${data}">Editar</a> &nbsp; <a class="btn btn-danger text-white" style="cursor:pointer;" onclick= "Delete('/Main/Instructor/Eliminar/${data}')">Eliminar</a> </div>`
+                    return `<div class="text-center"><a class="btn btn-primary" href="/Main/Aprendiz/Edit/${data}">Editar</a> &nbsp; <a class="btn btn-danger text-white" style="cursor:pointer;" onclick= "Delete('/Main/Aprendiz/Eliminar/${data}')">Eliminar</a> </div>`
 
                 }
             }
@@ -39,7 +40,7 @@ function cargarDataTable() {
 
 function Delete(urlDestino) {
     swal({
-        title: "Estas seguro de borrar el instructor?",
+        title: "Estas seguro de borrar el Aprendiz?",
         text: "esta accion no se puede revertir",
         type: "warning",
         showCancelButton: true,

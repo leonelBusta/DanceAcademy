@@ -19,8 +19,9 @@ function cargarDataTable() {
             { "data": "apMaterno" },
             {
                 "data": "urlFoto",
+                "width": "25%",
                 "render": function (data) {
-                    return `<img src=/${data} alt="" width="100"/>`
+                    return `<img src=/${data} alt="Image" width="200"/>`
                 }
             },
             { "data": "codigoInstructor" },
